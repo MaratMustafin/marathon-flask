@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}
+Моя страница - {{ sname }}
+{% endblock %}
+{% block content %}
+    <hr class="">
+    <div class="container target">
+        <div class="row">
+            <div class="col-sm-10">
+                 <h1 class="">{{ sname }}</h1>
+                 <a href="" class="btn btn-info">Подпишись на нас!</a>
+                 <a href="{{ url_for('logout') }}" class="btn btn-danger">выйти</a>
+                 <br>
+            </div>
+            <div class="col-sm-2"><img title="граватар ааааахахаха))" class="img-circle img-responsive" src="{{ simg }}"></div>
+        </div>
+      <br>
+        <div class="row">
+            <div class="col-sm-3">
+                <ul class="list-group">
+                    <li class="list-group-item text-muted" contenteditable="false">Профиль</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">ник телеги:</strong></span> {{ sname }}</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">заходил:</strong></span> {{ moment(student.last_seen).format('LLL') }} </li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong class="">роль: </strong></span> участник
+                   
+                          </li>
+                </ul>
+               <div class="panel panel-default">
+                 <div class="panel-heading">Не грусти =)
+    
+                    </div>
+                    <div class="panel-body"><i style="color:green" class="fa fa-check-square"></i> [Текст - мотивация]
+    
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: yellow;">Наш офф.сайт <i class="fa fa-link fa-1x"></i>
+    
+                    </div>
+                    <div class="panel-body"><a href="https://club-1c.kz/" class="">club-1c.kz</a>
+    
+                    </div>
+                </div>
+              
+                <div class="panel panel-default">
+                    <div class="panel-heading">Соц.сети</div>
+                    <div class="panel-body">	<i class="fa fa-facebook fa-2x"></i>  <i class="fa fa-github fa-2x"></i> 
+                        <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i>  <i class="fa fa-google-plus fa-2x"></i>
+    
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9" style="" contenteditable="false">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: red; color: white">{{ sname }}</div>
+                    <div class="panel-body"> {{ sname }} - какой-то крутой чувак(чувиха) ихихих))
+     
+                    </div>
+                </div>
+                <div class="panel panel-default target">
+                    <div class="panel-heading" contenteditable="false" style="background-color: green; color: white;">Наши занятия на 7-дневном марафоне</div>
+                    <div class="panel-body">
+                      <div class="row">
+            <div class="col-md-4">
+              <div class="thumbnail">
+                <img alt="300x200" src="{{ simg }}">
+                <div class="caption">
+                  <h3>
+                    1 день
+                  </h3>
+                  <p>
+                    ухухуху
+                  </p>
+                  <p>
+                  
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="thumbnail">
+                <img alt="300x200" src="{{ simg }}">
+                <div class="caption">
+                  <h3>
+                     2 день
+                  </h3>
+                  <p>
+                    тутутуту
+                  </p>
+                  <p>
+                  
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="thumbnail">
+                <img alt="300x200" src="{{ simg }}">
+                <div class="caption">
+                  <h3>
+                    3 день
+                  </h3>
+                  <p>
+                    лулулул
+                  </p>
+                  <p>
+                  
+                  </p>
+                </div>
+                    </div>
+                     
+                </div>
+                         
+                </div>
+                     
+            </div>
+                  
+        </div>
+               <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: aqua;">Отправить работу на проверку</div>
+                    <div class="panel-body"> 
+                      {% with messages = get_flashed_messages(with_categories=true) %}
+                      {% if messages %}
+                          {% for message in messages %}
+                          <div class="alert alert-{{ message[0] }}">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <strong>Внимание!</strong> {{ message [1] }}.
+                            </div>
+                          {% endfor %}
+                      {% endif %}
+                      {% endwith %}
+                      <div class="container">
+                        <div class="starter-template">
+                          {% if my_dict[sname] == 5 %}
+                            <h1>Удали работу, чтобы форма появилась)</h1>
+                          {% else %}
+                            <form action="{{ url_for('upload',id=sid) }}" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                              <label for="inputFile">Загрузите файл</label>
+                              <input type="file" name="inputFile">
+                            </div>
+                            <button type="submit" class="btn btn-default">загрузить</button>
+                          </form>
+                          {% endif %}
+                          {% for t in task %}
+                            {% if t.student_id == sid %}
+                            <h3>{{ t.name }} <a href="{{ url_for('delete_upload',id = t.id) }}" onclick="return confirm('Ты уверен(Если ты удалишь файл, удалиться и рейтинг твоих баллов за эту работу) ?')">удалить работу</a> - <a href="{{ url_for('download',id=t.id) }}">скачать</a></h3> 
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+    
+                    </div>
+    </div></div>
+    
+    
+            <div id="push"></div>
+            </div>
+            <footer id="footer">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <p> 
+                            <a href="http://twitter.com/" rel="nofollow" target="ext">Twitter</a><br>
+                            <a href="https://plus.google.com/" rel="publisher">Google+</a><br>
+                            <a href="http://facebook.com/" rel="nofollow"  target="ext">Facebook</a><br>
+                            <a href="https://github.com/" target="ext">GitHub</a><br>
+                        </p>
+                    </div>
+                    <div class="span3">
+                        <span class="pull-right">©Copyright 2020 <a href="/" title="The Bootstrap Playground thanks">MaratMustafin</a> | <a href="{{ url_for('privacy') }}">Политика</a></span>
+                    </div>
+                </div>
+            </footer>
+  
+         
+        
+    </div>
+  
+{% endblock %}

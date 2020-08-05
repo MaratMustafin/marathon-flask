@@ -1,0 +1,11 @@
+{% extends 'bootstrap/base.html' %}
+  {% block content %}
+  {% endblock %}
+
+
+  {% block scripts %}
+  {{ super() }}
+  {{ moment.include_moment() }}
+  {{ moment.lang('ru') }}     <!-- Я добавил эту строку -->
+{% endblock %}
+

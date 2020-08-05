@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>7x7 marathon</title>
+  <meta name="description" content="An awesome one page website">
+  <meta name="author" content="nono">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/skeleton.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/jquery.fancybox.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/favicon.png') }}" />
+
+  <!-- Javascript
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.2.1.3.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/isotope.pkgd.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/scrollreveal.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/singlenav.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/jquery.fancybox.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static',filename='js/scripts.js') }}"></script>
+
+</head>
+<body>
+
+<!-- Menu -->
+
+<nav class="navigation">
+  <a href="index.html#" class="menu-icon">
+    <i class="fa fa-bars"></i>
+  </a>
+  <ul class="main-navigation">
+    <li><a href="index.html#hero">Главная</a></li>
+    <li><a href="index.html#introduction">Вступление</a></li>
+    <li><a href="index.html#creativity">Удиви меня</a></li>
+    <li><a href="index.html#work">Что мы пройдем?</a></li>
+    <li><a href="index.html#help">Остались вопросы?</a></li>
+    <li><a href="index.html#about">Наша команда</a></li>
+    <li><a href="index.html#video">Видео-презентация</a></li>
+    <li><a href="index.html#contact">Присоединиться</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+
+<section id="hero" class="hero u-full-width">
+  <div class="hero-image"></div>
+  <div class="container centered">
+    <div class="twelve columns">
+      <h1 class="separator">7x7 MARATHON</h1>
+      <h2>Йоу ты! Добро Пожаловать на наш скромный марафон IT-знаний. На этом марафоне ты получишь море знаний.. Просто поверь! =)</h2>
+    </div>
+  </div>
+</section>
+
+<!-- Introduction -->
+
+<section data-sr id="introduction" class="introduction u-full-width">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h3 class="separator">Вступление</h3>
+        <h4>Добро пожаловать на наш марафон, путник. Здесь ты получишь отличный багаж знаний, который ты сможешь использовать в будущем. Не трать свое время попусту))</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Creativity -->
+
+<section data-sr id="creativity" class="creativity u-full-width featured-bg-image">
+  <h4 class="centered">
+    <a href="{{ url_for('rating') }}" class="button inverted">РЕЙТИНГ</a>
+  </h4>
+</section>
+
+<!-- Work -->
+
+<section data-sr id="work" class="work u-full-width">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h3 class="separator">Что мы пройдем?</h3>
+      </div>
+    </div>
+    <div class="row">
+      <ul class="work-filters u-full-width">
+        <li class="active">
+          <a href="index.html#" data-filter="*">0-План</a>
+        </li>
+        <li>
+          <a href="index.html#" data-filter=".first-day">1-день</a>
+        </li>
+        <li>
+          <a href="index.html#" data-filter=".second-day">2-день</a>
+        </li>
+        <li>
+          <a href="index.html#" data-filter=".third-day">3-день</a>
+        </li>
+        <li>
+          <a href="index.html#" data-filter=".fourth-day">4-день</a>
+        </li>
+        <li>
+          <a href="index.html#" data-filter=".five-day">5-день</a>
+        </li>
+      </ul>
+    </div>
+    <div class="row">
+      <ul class="work-items isotope js-isotope u-cf first-day">
+        <li class="four columns isotope-item first-day">
+          <img src="{{ url_for('static',filename='images/portfolio/work_1.svg') }}">
+          <div class="work-detail">
+            <div class="vertical-centered">
+              <h3>Что-то еще</h3>
+              <p class="separator orange">Что-то еще</p>
+            </div>
+          </div>
+        </li>
+        <li class="four columns isotope-item second-day">
+          <img src="{{ url_for('static',filename='images/portfolio/work_2.svg') }}">
+          <div class="work-detail">
+            <div class="vertical-centered">
+              <h3>Что-то еще</h3>
+              <p class="separator orange">Что-то еще</p>
+            </div>
+          </div>
+        </li>
+        <li class="four columns isotope-item third-day">
+          <img src="{{ url_for('static',filename='images/portfolio/work_3.svg') }}">
+          <div class="work-detail">
+            <div class="vertical-centered">
+              <h3>Что-то еще</h3>
+              <p class="separator orange">Что-то еще</p>
+            </div>
+          </div>
+        </li>
+        <li class="four columns isotope-item fourth-day">
+          <img src="{{ url_for('static',filename='images/portfolio/work_4.svg') }}">
+          <div class="work-detail">
+            <div class="vertical-centered">
+              <h3>Что-то еще</h3>
+              <p class="separator orange">Что-то еще</p>
+            </div>
+          </div>
+        </li>
+        <li class="four columns isotope-item five-day">
+          <img src="{{ url_for('static',filename='images/portfolio/work_5.svg') }}">
+          <div class="work-detail">
+            <div class="vertical-centered">
+              <h3>Что-то еще</h3>
+              <p class="separator orange">Что-то еще</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Help -->
+
+<section data-sr id="help" class="help u-full-width featured-bg-image">
+  <h4 class="centered">
+    <button class="button inverted">Остались вопросы?</button>
+  </h4>
+</section>
+
+<!-- About -->
+
+<section data-sr id="about" class="about u-full-width">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h3 class="separator">Наша команда</h3>
+        <h4>Проф.челики</h4>
+      </div>
+    </div>
+    <div class="row">
+      <ul class="people-list">
+        <li class="three columns people-list-item">
+          <img src="index.html" style="background-color: rgb(53, 156, 158);"> 
+          <div class="people-hover">
+            <a href="index.html#"><i class="fa fa-external-link"></i></a>
+            <div class="people-detail">
+              <h3>Челик1</h3>
+              <p>Программист1</p>
+            </div>
+          </div>
+        </li>
+        <li class="three columns people-list-item">
+          <img src="index.html" style="background-color: rgb(15, 22, 92);">
+          <div class="people-hover">
+            <a href="index.html#"><i class="fa fa-external-link"></i></a>
+            <div class="people-detail">
+              <h3>Челик2</h3>
+              <p>Программист2</p>
+            </div>
+          </div>
+        </li>
+        <li class="three columns people-list-item">
+          <img src="index.html" style="background-color: burlywood;">
+          <div class="people-hover">
+            <a href="index.html#"><i class="fa fa-external-link"></i></a>
+            <div class="people-detail">
+              <h3>Челик3</h3>
+              <p>Программист3</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Video -->
+
+<section data-sr id="video" class="video u-full-width featured-bg-image">
+  <h4 class="centered">
+    <a href="https://www.youtube.com/embed/33UohY2zjTs?autoplay=1" class="button inverted circle fancybox.iframe video-play">
+      <i class="fa fa-play"></i>
+    </a>
+  </h4>
+</section>
+
+
+<!-- Contact -->
+
+<section data-sr id="contact" class="contact u-full-width">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h3 class="separator">Запишитесь прямо сейчас!</h3>
+        <h4> Мотивирующий текст</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Us -->
+
+<section data-sr class="container contact-us u-full-width u-max-full-width">
+  <div class="row">
+    <div class="four columns contact-us-details">
+      <h3>Все будет онлайн</h3>
+      <h5>
+      ссылка на телеграм чат <br />
+      ссылка на видео-конференцию<br />
+      телефон для помощи<br /></h5>
+      <ul class="social-links">
+        <li>
+          <a href="http://twitter.com/wdtuts" target="_blank">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/webdesigntutsplus" target="_blank">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://plus.google.com/117485987435498566293" target="_blank">
+            <i class="fa fa-google-plus"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="eight columns contact-us-form">
+      <!-- <form>
+        <div class="row">
+          <div class="six columns">
+            <input class="u-full-width" type="text" placeholder="Ваше имя" id="nameInput">
+          </div>
+          <div class="six columns">
+            <input class="u-full-width" type="email" placeholder="id telegram" id="emailInput">
+          </div>
+        </div>
+        <textarea class="u-full-width" placeholder="Пожелания лол)" id="messageInput"></textarea>
+        <input class="button u-pull-right" type="submit" value="Отправить">
+      </form> -->
+      <a href="" class="button">переходи по ссылке для регистрации</a><br>
+      <a href="{{ url_for('login') }}" class="button">войти в систему</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+
+<section data-sr class="footer u-full-width">
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h5>&copy 2020 MaratMustafin</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

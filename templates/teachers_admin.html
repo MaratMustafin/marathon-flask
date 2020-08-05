@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block content %}
+<hr class="">
+<div class="container target">
+    <div class="row">
+        <div class="col-sm-10">
+             <h1 class="">{{ teacher.name }}</h1>
+             <a href="{{ url_for('teachers_logout') }}" class="btn btn-danger">выйти</a>
+             <br>
+        </div>
+        <!-- <div class="col-sm-2"><img title="граватар ааааахахаха))" class="img-circle img-responsive" src=""></div> -->
+    </div>
+  <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <ul class="list-group">
+                <li class="list-group-item text-muted" contenteditable="false">Профиль</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">ник</strong></span> {{ teacher.name }}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">роль: </strong></span> судья</li>
+            </ul>
+           <div class="panel panel-default">
+             <div class="panel-heading">Не грусти =)
+
+                </div>
+                <div class="panel-body"><i style="color:green" class="fa fa-check-square"></i> [Текст - мотивация]
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: yellow;">Наш офф.сайт <i class="fa fa-link fa-1x"></i>
+
+                </div>
+                <div class="panel-body"><a href="https://club-1c.kz/" class="">club-1c.kz</a>
+
+                </div>
+            </div>
+          
+            <div class="panel panel-default">
+                <div class="panel-heading">Соц.сети</div>
+                <div class="panel-body">	<i class="fa fa-facebook fa-2x"></i>  <i class="fa fa-github fa-2x"></i> 
+                    <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i>  <i class="fa fa-google-plus fa-2x"></i>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9" style="" contenteditable="false">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: red; color: white">{{ teacher.name }}</div>
+                <div class="panel-body"> {{ teacher.name }} - какой-то крутой чувак(чувиха) ихихих))
+ 
+                </div>
+            </div>
+            <div class="panel panel-default target">
+                <div class="panel-heading" contenteditable="false" style="background-color: green; color: white;">Наши занятия на 7-дневном марафоне</div>
+                <div class="panel-body">
+                  <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="">
+            <div class="caption">
+              <h3>
+                1 день
+              </h3>
+              <p>
+                ухухуху
+              </p>
+              <p>
+              
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="">
+            <div class="caption">
+              <h3>
+                 2 день
+              </h3>
+              <p>
+                тутутуту
+              </p>
+              <p>
+              
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img alt="300x200" src="">
+            <div class="caption">
+              <h3>
+                3 день
+              </h3>
+              <p>
+                лулулул
+              </p>
+              <p>
+              
+              </p>
+            </div>
+                </div>
+                 
+            </div>
+                     
+            </div>
+                 
+        </div>
+              
+    </div>
+           <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: aqua;">Отправить пост на главную страницу</div>
+                <div class="panel-body"> 
+                  <div class="container">
+                                
+                  </div>
+
+                </div>
+</div>
+</div>    
+</div>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <td><strong>имя</strong></td>
+                <td><strong>задание 1</strong></td>
+                <td><strong>задание 2</strong></td>
+                <td><strong>задание 3</strong></td>
+                <td><strong>задание 4</strong></td>
+                <td><strong>задание 5</strong></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                {% for t in task %}
+                {% if t.owner.id == student.id %}
+                <td>
+                    <ol>
+                        <li><strong>Название работы</strong> - <a href="{{ url_for('download',id=t.id) }}">{{ t.name }}</a></li>
+                            <li><strong>Описание работы</strong> - {{ t.description }}</li>
+                            <li>
+                                <form action="{{ url_for('teachers_admin_update',id=t.owner.id) }}" method="POST">
+                                    <input type="hidden" value="{{ t.id }}" name="task_id">
+                                    <input type="text" placeholder="введите баллы" name="student_score">
+                                    <input type="submit" value="Дать баллы">                
+                                </form>
+                            </li>
+                            <li>
+                            {% for data in t.ratings %}
+                            {% if teacher.id == data.teacher_id %}
+                                {{ data.score }} - <a href="{{ url_for('teachers_admin_delete',rating_id=data.rating_id) }}">удалить</a>
+                            {% endif %}
+                            {% endfor %}
+                            </li>
+                            {% endif %}
+                            {% endfor %}                                            
+                    </ol>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+<div class="container">
+<div id="push"></div>
+</div>
+<footer id="footer">
+    <div class="row-fluid">
+        <div class="span3">
+            <p> 
+                <a href="http://twitter.com/" rel="nofollow" target="ext">Twitter</a><br>
+                <a href="https://plus.google.com/" rel="publisher">Google+</a><br>
+                <a href="http://facebook.com/" rel="nofollow"  target="ext">Facebook</a><br>
+                <a href="https://github.com/" target="ext">GitHub</a><br>
+            </p>
+        </div>
+        <div class="span3">
+            <span class="pull-right">©Copyright 2020 <a href="/" title="The Bootstrap Playground thanks">MaratMustafin</a> | <a href="{{ url_for('privacy') }}">Политика</a></span>
+        </div>
+    </div>
+</footer>
+</div>
+{% endblock %}
